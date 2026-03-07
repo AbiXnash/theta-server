@@ -22,6 +22,10 @@ func main() {
 	e.Use(middleware.RequestLogger())
 	e.Use(middleware.Recover())
 
+	e.GET("/health", func(c *echo.Context) error {
+		return c.JSON(200, map[string]string{"status": "ok"})
+	})
+
 	api := e.Group("/api")
 	api.Use(httpMiddleware.APIKey(cfg.APIKey))
 	httpRouter.Register(api, handler)

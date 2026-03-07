@@ -20,3 +20,5 @@ Default key is `somethings` unless `THETA_API_KEY` is set.
 - `PORT` (default: `8080`)
 - `THETA_API_KEY` (default: `somethings`)
 - `THETA_DATA_DIR` (default: `data`)
+
+- `GET /health` -> service health check
