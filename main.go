@@ -16,7 +16,7 @@ func main() {
 
 	api := e.Group("/api")
 
-	api.GET("/", GetTeams)
+	api.GET("/team", GetTeams)
 
 	if err := e.Start(":8080"); err != nil {
 		slog.Error("failed to start server", "error", err)
