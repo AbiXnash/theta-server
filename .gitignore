@@ -1,0 +1,9 @@
+# Build outputs
+/theta-server
+
+# Go test artifacts
+*.test
+*.out
+
+# macOS
+.DS_Store

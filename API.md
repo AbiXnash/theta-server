@@ -1,12 +1,24 @@
 # Theta Server API
 
-All endpoints are mounted under `/api` and require this header:
+Base URL (local): `http://localhost:8080`
+
+## Authentication
+
+All `/api/*` routes require header:
 
 - `X-ABX-THETA-KEY: <your key>`
 
 Default key is `somethings` unless `THETA_API_KEY` is set.
 
+Example:
+
+```bash
+curl -H "X-ABX-THETA-KEY: somethings" http://localhost:8080/api/team
+```
+
 ## Endpoints
+
+Protected endpoints:
 
 - `GET /api/team` -> `data/team.json`
 - `GET /api/config` -> `data/config.json`
@@ -15,10 +27,17 @@ Default key is `somethings` unless `THETA_API_KEY` is set.
 - `GET /api/sponsors` -> `data/sponsors.json`
 - `GET /api/manifest` -> `data/manifest.json`
 
+Public endpoints:
+
+- `GET /health` -> `{"status":"ok"}`
+
+## Errors
+
+- `401 Unauthorized`: missing or invalid API key
+- `500 Internal Server Error`: file read/load failure
+
 ## Environment variables
 
 - `PORT` (default: `8080`)
 - `THETA_API_KEY` (default: `somethings`)
 - `THETA_DATA_DIR` (default: `data`)
-
-- `GET /health` -> service health check

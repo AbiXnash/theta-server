@@ -2,12 +2,14 @@ package config
 
 import "os"
 
+// Config stores runtime configuration loaded from environment variables.
 type Config struct {
 	Port    string
 	APIKey  string
 	DataDir string
 }
 
+// Load reads configuration from environment variables and applies defaults.
 func Load() Config {
 	port := os.Getenv("PORT")
 	if port == "" {

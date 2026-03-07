@@ -6,6 +6,7 @@ import (
 	"github.com/labstack/echo/v5"
 )
 
+// APIKey validates the X-ABX-THETA-KEY request header.
 func APIKey(requiredKey string) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c *echo.Context) error {
