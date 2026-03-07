@@ -38,7 +38,7 @@ Server starts on `http://localhost:8080` by default.
 ## Configuration
 
 - `PORT` (default: `8080`)
-- `THETA_API_KEY` (default: `somethings`)
+- `THETA_API_KEY` (required, no default)
 - `THETA_DATA_DIR` (default: `data`)
 
 Example:

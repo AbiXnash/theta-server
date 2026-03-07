@@ -8,12 +8,10 @@ All `/api/*` routes require header:
 
 - `X-ABX-THETA-KEY: <your key>`
 
-Default key is `somethings` unless `THETA_API_KEY` is set.
-
 Example:
 
 ```bash
-curl -H "X-ABX-THETA-KEY: somethings" http://localhost:8080/api/team
+curl -H "X-ABX-THETA-KEY: my-secret" http://localhost:8080/api/team
 ```
 
 ## Endpoints
@@ -39,5 +37,5 @@ Public endpoints:
 ## Environment variables
 
 - `PORT` (default: `8080`)
-- `THETA_API_KEY` (default: `somethings`)
+- `THETA_API_KEY` (required, no default)
 - `THETA_DATA_DIR` (default: `data`)

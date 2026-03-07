@@ -14,7 +14,11 @@ import (
 )
 
 func main() {
-	cfg := config.Load()
+	cfg, err := config.Load()
+	if err != nil {
+		slog.Error("failed to load config", "error", err)
+		return
+	}
 	loader := data.NewLoader(cfg.DataDir)
 	handler := httpHandlers.NewJSONHandler(loader)
 

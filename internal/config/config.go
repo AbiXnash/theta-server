@@ -1,6 +1,9 @@
 package config
 
-import "os"
+import (
+	"fmt"
+	"os"
+)
 
 // Config stores runtime configuration loaded from environment variables.
 type Config struct {
@@ -10,7 +13,7 @@ type Config struct {
 }
 
 // Load reads configuration from environment variables and applies defaults.
-func Load() Config {
+func Load() (Config, error) {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
@@ -18,7 +21,7 @@ func Load() Config {
 
 	apiKey := os.Getenv("THETA_API_KEY")
 	if apiKey == "" {
-		apiKey = "somethings"
+		return Config{}, fmt.Errorf("THETA_API_KEY is required")
 	}
 
 	dataDir := os.Getenv("THETA_DATA_DIR")
@@ -30,5 +33,5 @@ func Load() Config {
 		Port:    port,
 		APIKey:  apiKey,
 		DataDir: dataDir,
-	}
+	}, nil
 }

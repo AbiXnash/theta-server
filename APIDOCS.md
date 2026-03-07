@@ -11,7 +11,7 @@ All `/api/*` endpoints require:
 Example:
 
 ```bash
-curl -H "X-ABX-THETA-KEY: somethings" http://localhost:8080/api/team
+curl -H "X-ABX-THETA-KEY: my-secret" http://localhost:8080/api/team
 ```
 
 ## Public Endpoint
@@ -52,5 +52,5 @@ Serves `data/manifest.json`
 ## Environment Variables
 
 - `PORT` (default `8080`)
-- `THETA_API_KEY` (default `somethings`)
+- `THETA_API_KEY` (required, no default)
 - `THETA_DATA_DIR` (default `data`)

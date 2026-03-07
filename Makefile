@@ -1,7 +1,6 @@
 APP_NAME=theta-server
 PKG=./...
 PORT?=8080
-THETA_API_KEY?=somethings
 THETA_DATA_DIR?=data
 
 .PHONY: help fmt vet test build run clean check
@@ -29,7 +28,7 @@ build:
 	go build -o $(APP_NAME) .
 
 run:
-	PORT=$(PORT) THETA_API_KEY=$(THETA_API_KEY) THETA_DATA_DIR=$(THETA_DATA_DIR) go run .
+	PORT=$(PORT) THETA_API_KEY=$${THETA_API_KEY:?THETA_API_KEY is required} THETA_DATA_DIR=$(THETA_DATA_DIR) go run .
 
 check: fmt vet test build
 
