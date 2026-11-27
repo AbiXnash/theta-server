@@ -41,6 +41,15 @@ Server starts on `http://localhost:8080` by default.
 - `THETA_API_KEY` (required, no default)
 - `THETA_DATA_DIR` (default: `data`)
 
+Copy `.env.example` for a starting point. Requests to `/api/*` must send the key in the `X-ABX-THETA-KEY` header:
+
+```bash
+curl -H "X-ABX-THETA-KEY: my-secret" http://localhost:8080/api/events
+```
+
+Endpoints: `GET /health` (public) and `GET /api/team`, `/api/config`, `/api/events`, `/api/content`, `/api/sponsors`,
+`/api/manifest`, one for each JSON file in `data/`.
+
 Example:
 
 ```bash
@@ -57,9 +66,16 @@ PORT=9090 THETA_API_KEY=my-secret make run
 - `make check`: run fmt + vet + test + build
 - `make clean`: remove built binary
 
+## Docker
+
+```bash
+docker build -t theta-server .
+docker run -p 8080:8080 -e THETA_API_KEY=my-secret theta-server
+```
+
 ## API
 
-See [API.md](API.md) for full endpoint list and `curl` examples.
+See [API.md](API.md) (or [APIDOCS.md](APIDOCS.md)) for the full endpoint list and `curl` examples.
 
 ## Verification
 
